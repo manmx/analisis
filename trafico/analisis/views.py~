@@ -14,11 +14,8 @@ def index(request):
 	html = render(request, 'analisis/index.html', context)
 	return html
 def plotResults(request):
-	import random
-	import django
-	import datetime
 	import numpy as np
-	import matplotlib.pyplot as plt
+	#import matplotlib.pyplot as plt
 
 	from matplotlib.backends.backend_agg import FigureCanvasAgg as  FigureCanvas
 	from matplotlib.figure import Figure

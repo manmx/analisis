@@ -1,5 +1,5 @@
 <h1>Histograma de siempre</h1>
-<img src="result.png"></img>
+<img src="histo.png"></img>
 <ul>
 	{% for registro in lista %}
 		<li><a>{{registro.ticket}}{{registro.fecha}}{{registro.motivo}}{{registro.latitud}}{{registro.longitud}}</a></li>
