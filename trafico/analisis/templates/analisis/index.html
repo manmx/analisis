@@ -1,7 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<title>Sample Stats</title>
+</head>
+<body>
 <h1>Histograma de siempre</h1>
+<form action="{% url 'result' %}" method="post">
+{% csrf_token %}
+{% for value in choices %}
+<label class="checkbox-inline">
+ <input type="checkbox" name="checks" value="{{value}}">{{value}}    
+</label>
+{% endfor %}
+</br>
+<input type="submit" value="FILTRAR">
+</form>
 <img src="result.png"></img>
 <ul>
-	{% for registro in lista %}
-		<li><a>{{registro.ticket}}{{registro.fecha}}{{registro.motivo}}{{registro.latitud}}{{registro.longitud}}</a></li>
-	{% endfor %}
+    {% for registro in lista %}
+        <li><a>{{registro.ticket}}{{registro.fecha}}{{registro.motivo}}{{registro.latitud}}{{registro.longitud}}</a></li>
+    {% endfor %}
 </ul>
+</body>
+</html>

@@ -4,5 +4,6 @@ from analisis import views
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
-	url(r'^histo.png$', views.plotResults),
+	url(r'^result.png$', views.plotResults),
+	url(r'^analiza$', views.plotResults),
 ]
