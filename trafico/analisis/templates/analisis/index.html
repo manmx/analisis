@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>Histograma de siempre</h1>
-<form action="{% url 'result' %}" method="post">
+<form id='ajaxform' action="{% url 'result1' %}" method="post">
 {% csrf_token %}
 {% for value in choices %}
 <label class="checkbox-inline">
@@ -21,13 +21,32 @@
 </label>
 {% endfor %}
 </br>
-<input type="submit" value="FILTRAR">
 </form>
-<img src="result.png"></img>
+<button id="submit-mani">Submit</button>
+<img id="mainImage" src="result.png"></img>
 <ul>
     {% for registro in lista %}
         <li><a>{{registro.ticket}}{{registro.fecha}}{{registro.motivo}}{{registro.latitud}}{{registro.longitud}}</a></li>
     {% endfor %}
 </ul>
+<script>
+	//callback handler for form submit
+
+	$("#submit-mani").click(function(){
+		var form = $("#ajaxform");
+		var postData = form.serializeArray();
+		console.log(postData);
+		$.ajax({
+	        url : "{% url 'result1' %}",
+	        type: "POST",
+	        data : postData
+	    }).done(function(msg){
+	    	console.log(msg);
+	    	$("#mainImage").attr("src", msg);
+	    });
+	})
+
+	//$("#ajaxform").submit(); //Submit  the FORM
+</script>
 </body>
 </html>
